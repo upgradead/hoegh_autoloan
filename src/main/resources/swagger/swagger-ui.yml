@@ -1,0 +1,76 @@
+swagger: "2.0"
+info:
+  description: "Höegh Autoliners Dynamic Loan Application"
+  version: "1.0.0"
+  title: "Höegh Autoliners Dynamic Loan Application"
+
+basePath: "/"
+tags:
+  - name: "loan"
+    description: "Dynamic Loan application"
+
+schemes:
+  - "https"
+paths:
+  /loan:
+    get:
+      tags:
+        - "loan"
+      summary: "Calculate monthly amortization"
+      description: ""
+      operationId: "getMonthlyAmortization"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/Loan"
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            $ref: '#/definitions/TotalInterest'
+        "400":
+          description: "Invalid amount"
+definitions:
+  Loan:
+    type: "object"
+    required:
+      - "mortgage"
+      - "maxMonthlyPay"
+      - "terms"
+      - "loanType"
+    properties:
+      mortgage:
+        type: "integer"
+        format: "double"
+      maxMonthlyPay:
+        type: "integer"
+        format: "double"
+      terms:
+        type: "integer"
+      loanType:
+        type: "string"
+        enum:
+          - house
+          - car
+  TotalInterest:
+    type: array
+    items:
+      $ref: '#/definitions/MonthlyInterest'
+  MonthlyInterest:
+    type: "object"
+    properties:
+      interest:
+        type: "number"
+        format: "double"
+      capital:
+        type: "number"
+        format: "double"
+      capitalLeft:
+        type: "number"
+        format: "double"
+      term:
+        type: "integer"

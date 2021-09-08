@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: autoloan
+
+loan:
+  interests:
+    car: 3
+    house: 4
+  defaultInterest: 6

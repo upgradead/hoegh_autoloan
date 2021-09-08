@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "dcd921aa-91d1-451c-aac7-5f317aacc25b",
+		"name": "Hoegh Autoliners",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HouseLoanRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"loanType\": \"house\",\r\n  \"maxMonthlyPay\": 2520,\r\n  \"mortgage\": 532844,\r\n  \"terms\": 25\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/loan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CarLoanRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"loanType\": \"car\",\r\n  \"maxMonthlyPay\": 2520,\r\n  \"mortgage\": 532844,\r\n  \"terms\": 25\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/loan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
