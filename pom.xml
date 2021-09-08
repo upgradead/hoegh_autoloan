@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>autoliners.hoegh</groupId>
 	<artifactId>autoloan</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>autoloan</name>
 	<description>Dynamic auto loan application</description>
 	<properties>

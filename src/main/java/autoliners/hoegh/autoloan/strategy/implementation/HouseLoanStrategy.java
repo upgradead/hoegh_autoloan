@@ -4,12 +4,15 @@ import autoliners.hoegh.autoloan.model.Loan;
 import autoliners.hoegh.autoloan.model.LoanParam;
 import autoliners.hoegh.autoloan.model.TotalInterest;
 import autoliners.hoegh.autoloan.strategy.LoanStrategy;
+import autoliners.hoegh.autoloan.util.MonthlyInterestBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class HouseLoanStrategy extends LoanStrategy {
+
+    private TotalInterest totalInterest = new TotalInterest();
 
     @Override
     public Loan.LoanTypeEnum getType() {
@@ -23,20 +26,21 @@ public class HouseLoanStrategy extends LoanStrategy {
         double monthlyMaxPay = loanParam.getMonthlyMaxPay();
 
         if (mortgage < monthlyMaxPay) {
-            return getTotalInterest();
+            return totalInterest;
         }
 
         double amortizationInterest = (mortgage * (loanParam.getInterest() / 12));
         double amortizationCapital = monthlyMaxPay - amortizationInterest;
 
-        buildInterestList(mortgage, amortizationInterest, amortizationCapital, loanParam.getTerms());
+        totalInterest.add(MonthlyInterestBuilder.buildInterestList(
+                mortgage, amortizationInterest, amortizationCapital, loanParam.getTerms()));
 
         loanParam.setTerms(loanParam.getTerms() - 1);
         loanParam.setMortgage(mortgage - amortizationCapital);
 
         calculate(loanParam);
 
-        return getTotalInterest();
+        return totalInterest;
     }
 
 }

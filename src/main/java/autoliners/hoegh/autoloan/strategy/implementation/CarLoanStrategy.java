@@ -4,6 +4,7 @@ import autoliners.hoegh.autoloan.model.Loan;
 import autoliners.hoegh.autoloan.model.LoanParam;
 import autoliners.hoegh.autoloan.model.TotalInterest;
 import autoliners.hoegh.autoloan.strategy.LoanStrategy;
+import autoliners.hoegh.autoloan.util.MonthlyInterestBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,8 @@ public class CarLoanStrategy extends LoanStrategy {
 
         log.info("Processing record for House Loan {}", loanParam);
 
+        TotalInterest totalInterest = new TotalInterest();
+
         double mortgage = loanParam.getMortgage();
         double monthlyMaxPay = loanParam.getMonthlyMaxPay();
 
@@ -29,12 +32,13 @@ public class CarLoanStrategy extends LoanStrategy {
             double amortizationInterest = (mortgage * (loanParam.getInterest() / 12));
             double amortizationCapital = monthlyMaxPay - amortizationInterest;
 
-            buildInterestList(mortgage, amortizationInterest, amortizationCapital, loanParam.getTerms());
+            totalInterest.add(MonthlyInterestBuilder.buildInterestList(
+                    mortgage, amortizationInterest, amortizationCapital, loanParam.getTerms()));
 
             loanParam.setTerms(loanParam.getTerms() - 1);
             mortgage -= amortizationCapital;
         }
 
-        return getTotalInterest();
+        return totalInterest;
     }
 }
