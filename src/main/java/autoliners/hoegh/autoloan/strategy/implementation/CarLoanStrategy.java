@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class CarLoanStrategy extends LoanStrategy {
+public class CarLoanStrategy implements LoanStrategy {
 
     @Override
     public Loan.LoanTypeEnum getType() {

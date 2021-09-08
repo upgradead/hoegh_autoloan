@@ -7,7 +7,7 @@ import java.math.RoundingMode;
 
 public final class MonthlyInterestBuilder {
 
-    private MonthlyInterestBuilder(){
+    private MonthlyInterestBuilder() {
     }
 
     public static MonthlyInterest buildInterestList(double mortgage, double amortizationInterest, double amortizationCapital, int term) {

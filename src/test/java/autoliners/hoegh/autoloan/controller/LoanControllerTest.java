@@ -1,6 +1,5 @@
 package autoliners.hoegh.autoloan.controller;
 
-
 import autoliners.hoegh.autoloan.exception.LoanValidationException;
 import autoliners.hoegh.autoloan.model.Loan;
 import autoliners.hoegh.autoloan.model.MonthlyInterest;

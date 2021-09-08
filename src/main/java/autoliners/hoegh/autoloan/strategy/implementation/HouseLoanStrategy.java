@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class HouseLoanStrategy extends LoanStrategy {
+public class HouseLoanStrategy implements LoanStrategy {
 
     private TotalInterest totalInterest = new TotalInterest();
 

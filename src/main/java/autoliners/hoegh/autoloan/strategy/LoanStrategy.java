@@ -4,10 +4,10 @@ import autoliners.hoegh.autoloan.model.Loan;
 import autoliners.hoegh.autoloan.model.LoanParam;
 import autoliners.hoegh.autoloan.model.TotalInterest;
 
-public abstract class LoanStrategy {
+public interface LoanStrategy {
 
-    public abstract Loan.LoanTypeEnum getType();
+     Loan.LoanTypeEnum getType();
 
-    public abstract TotalInterest calculate(LoanParam loanParam);
+     TotalInterest calculate(LoanParam loanParam);
 
 }

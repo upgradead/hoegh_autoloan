@@ -1,7 +1,6 @@
 package autoliners.hoegh.autoloan.factory;
 
 import autoliners.hoegh.autoloan.exception.LoanValidationException;
-import autoliners.hoegh.autoloan.exception.handler.ControllerExceptionHandler;
 import autoliners.hoegh.autoloan.model.Loan;
 import autoliners.hoegh.autoloan.strategy.implementation.CarLoanStrategy;
 import org.junit.Assert;
