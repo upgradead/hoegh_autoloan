@@ -15,7 +15,7 @@ public class ControllerExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler
     public ErrorMessage validationExceptionHandler(LoanValidationException e) {
-        return new ErrorMessage(HttpStatus.BAD_REQUEST.toString(), e.getMessage());
+        return new ErrorMessage(String.valueOf(HttpStatus.BAD_REQUEST.value()), "Validation error " + e.getMessage());
     }
 
     @ResponseBody
@@ -23,6 +23,6 @@ public class ControllerExceptionHandler {
     @ExceptionHandler
     public ErrorMessage mainExceptionHandler(Exception e) {
         return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.toString(),
-                "Unexcpected exception " + e.getMessage());
+                "Unexpected exception " + e.getMessage());
     }
 }

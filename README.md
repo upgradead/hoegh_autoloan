@@ -25,6 +25,10 @@ Factory - Strategy Pattern
 Requests are for CAR and HOUSE loans
 Car has 3% interest while House has 4% interest all configured in the application.yml configuration file
 
+## autoloan-1.0.3
+ - Fixed front end integration issues
+ - Added security config for CORS error
+
 ## autoloan-1.0.2
  - Refactor LoanStrategy to be an interface instead of an abstract class
  
